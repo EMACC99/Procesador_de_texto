@@ -78,7 +78,11 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowModified(False)
 
     def UpdateLineCol(self):
-        pass
+        line = self.textEdit.textCursor().blockNumber() + 1
+        col = self.textEdit.textCursor().columnNumber() + 1
+        self.statusbar.showMessage(f"Ln {line}, Col {col}")
 
     def UpdateFont(self):
-        pass
+        FontFam = self.textEdit.currentFont().family()
+        indexOf = self.fontComboBox.findText(FontFam)
+        self.fontComboBox.setCurrentIndex(indexOf)
