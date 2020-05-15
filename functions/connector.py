@@ -1,7 +1,7 @@
 import json
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog
-from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog, QPushButton
+from PyQt5.QtGui import QFont, QPainter, QColor
 import sys
 import os
 from interfaz.interfaz import Ui_MainWindow as text_ui
@@ -14,6 +14,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionNew.triggered.connect(self.NewFile)
         self.actionOpen.triggered.connect(lambda: self.OpenFile(None))
         self.actionSave.triggered.connect(self.Save)
+        self.actionExit.triggered.connect(self.Exit)
         
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
@@ -25,6 +26,8 @@ class EditorWindow(QMainWindow, text_ui):
 
         self.titleTemplate = "[*]"
         self.filename = file
+
+        self.connect(self,)
 
         if file is not None and not os.path.exists(self.filename):
             self.filename = None
@@ -76,6 +79,33 @@ class EditorWindow(QMainWindow, text_ui):
         with open(self.filename, 'w') as f:
             f.write(self.textEdit.toPlainText())
         self.setWindowModified(False)
+
+
+    def Exit(self):
+        
+        def Check(i):
+            if i.text() == "Salir":
+                sys.exit()
+            elif i.text() == "Guardar":
+                self.Save()
+                sys.exit()
+        
+        if not self.isWindowModified():
+            sys.exit()
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setText("Salir sin guardar")
+            msg.setInformativeText("Todos los cambios se perderan")
+            msg.setWindowTitle("Advertencia")
+            msg.addButton(QPushButton("Salir"), QMessageBox.NoRole)
+            msg.addButton(QPushButton("Guardar"), QMessageBox.YesRole)
+            msg.buttonClicked.connect(Check)
+            msg.exec_()
+        
+    def closeEvent(self, event)
+
 
     def UpdateLineCol(self):
         line = self.textEdit.textCursor().blockNumber() + 1
