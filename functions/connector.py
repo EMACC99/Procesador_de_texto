@@ -11,6 +11,7 @@ class EditorWindow(QMainWindow, text_ui):
     def __init__(self, parent = None, file = None):
         super(EditorWindow, self).__init__(parent)
         self.setupUi(self)
+
         self.actionNew.triggered.connect(self.NewFile)
         self.actionOpen.triggered.connect(lambda: self.OpenFile(None))
         self.actionSave.triggered.connect(self.Save)
@@ -18,16 +19,16 @@ class EditorWindow(QMainWindow, text_ui):
         
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
-        self.textEdit.cursorPositionChanged.connect(self.UpdateFont)
+        self.textEdit.cursorPositionChanged.connect(self.updateFont)
+
         self.statusbar.showMessage("Ln 1, Col 1")
         self.fontComboBox.setEditable(False)
+
         self.toolBar.addWidget(self.fontComboBox)
         self.toolBar.addWidget(self.doubleSpinBox)
 
         self.titleTemplate = "[*]"
         self.filename = file
-
-        self.connect(self,)
 
         if file is not None and not os.path.exists(self.filename):
             self.filename = None
@@ -80,6 +81,11 @@ class EditorWindow(QMainWindow, text_ui):
             f.write(self.textEdit.toPlainText())
         self.setWindowModified(False)
 
+    def closeEvent(self, a0):
+        # print("Puchaste x")
+        self.Exit()
+        a0.accept()
+        
 
     def Exit(self):
         
@@ -103,16 +109,14 @@ class EditorWindow(QMainWindow, text_ui):
             msg.addButton(QPushButton("Guardar"), QMessageBox.YesRole)
             msg.buttonClicked.connect(Check)
             msg.exec_()
-        
-    def closeEvent(self, event)
-
+    
 
     def UpdateLineCol(self):
         line = self.textEdit.textCursor().blockNumber() + 1
         col = self.textEdit.textCursor().columnNumber() + 1
         self.statusbar.showMessage(f"Ln {line}, Col {col}")
 
-    def UpdateFont(self):
+    def updateFont(self):
         FontFam = self.textEdit.currentFont().family()
         indexOf = self.fontComboBox.findText(FontFam)
         self.fontComboBox.setCurrentIndex(indexOf)

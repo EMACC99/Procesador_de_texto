@@ -1,0 +1,35 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>iconos/align_center.png</file>
+    <file>iconos/align_left.png</file>
+    <file>iconos/align_right.png</file>
+    <file>iconos/bold.png</file>
+    <file>iconos/clear_all.png</file>
+    <file>iconos/copy.png</file>
+    <file>iconos/cut.png</file>
+    <file>iconos/dark.png</file>
+    <file>iconos/dark2.png</file>
+    <file>iconos/exit.png</file>
+    <file>iconos/find.png</file>
+    <file>iconos/font_color.png</file>
+    <file>iconos/italic.png</file>
+    <file>iconos/light_default.png</file>
+    <file>iconos/light_plus.png</file>
+    <file>iconos/monokai.png</file>
+    <file>iconos/monokai2.png</file>
+    <file>iconos/new.png</file>
+    <file>iconos/night_blue.png</file>
+    <file>iconos/night_blue2.png</file>
+    <file>iconos/open (2).png</file>
+    <file>iconos/open.png</file>
+    <file>iconos/paste.png</file>
+    <file>iconos/red.png</file>
+    <file>iconos/red2.png</file>
+    <file>iconos/save.png</file>
+    <file>iconos/save_as.png</file>
+    <file>iconos/Sin título.png</file>
+    <file>iconos/status_bar.png</file>
+    <file>iconos/tool_bar.png</file>
+    <file>iconos/underline.png</file>
+  </qresource>
+</RCC>
