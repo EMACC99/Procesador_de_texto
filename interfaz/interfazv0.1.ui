@@ -57,6 +57,7 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionAcerca_de"/>
    </widget>
    <addaction name="menufile"/>
    <addaction name="menuEdit"/>
@@ -115,6 +116,11 @@
   <action name="actionSave_as">
    <property name="text">
     <string>Save as</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>

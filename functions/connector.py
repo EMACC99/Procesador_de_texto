@@ -16,7 +16,8 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionOpen.triggered.connect(lambda: self.OpenFile(None))
         self.actionSave.triggered.connect(self.Save)
         self.actionExit.triggered.connect(self.Exit)
-        
+        self.actionAcerca_de.triggered.connect(self.about)
+
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
         self.textEdit.cursorPositionChanged.connect(self.updateFont)
@@ -87,8 +88,7 @@ class EditorWindow(QMainWindow, text_ui):
         a0.accept()
         
 
-    def Exit(self):
-        
+    def Exit(self):        
         def Check(i):
             if i.text() == "Salir":
                 sys.exit()
@@ -109,7 +109,7 @@ class EditorWindow(QMainWindow, text_ui):
             msg.addButton(QPushButton("Guardar"), QMessageBox.YesRole)
             msg.buttonClicked.connect(Check)
             msg.exec_()
-    
+
 
     def UpdateLineCol(self):
         line = self.textEdit.textCursor().blockNumber() + 1
@@ -120,3 +120,10 @@ class EditorWindow(QMainWindow, text_ui):
         FontFam = self.textEdit.currentFont().family()
         indexOf = self.fontComboBox.findText(FontFam)
         self.fontComboBox.setCurrentIndex(indexOf)
+
+    def about(self):
+        msg = QMessageBox(self)
+        msg.resize(240,110)
+        msg.setWindowTitle("About")
+        msg.setText("Editor de texto para la materia de ingenieria de software uwu")
+        msg.show()

@@ -61,6 +61,8 @@ class Ui_MainWindow(object):
         self.actionExit.setObjectName("actionExit")
         self.actionSave_as = QtWidgets.QAction(MainWindow)
         self.actionSave_as.setObjectName("actionSave_as")
+        self.actionAcerca_de = QtWidgets.QAction(MainWindow)
+        self.actionAcerca_de.setObjectName("actionAcerca_de")
         self.menufile.addSeparator()
         self.menufile.addSeparator()
         self.menufile.addAction(self.actionNew)
@@ -69,6 +71,7 @@ class Ui_MainWindow(object):
         self.menufile.addAction(self.actionSave)
         self.menufile.addSeparator()
         self.menufile.addAction(self.actionExit)
+        self.menuHelp.addAction(self.actionAcerca_de)
         self.menubar.addAction(self.menufile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
@@ -90,5 +93,6 @@ class Ui_MainWindow(object):
         self.actionSave.setText(_translate("MainWindow", "Save"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.actionSave_as.setText(_translate("MainWindow", "Save as"))
+        self.actionAcerca_de.setText(_translate("MainWindow", "About"))
 
 import interfaz.icons_rc
