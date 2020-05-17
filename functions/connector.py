@@ -19,6 +19,14 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionSave.triggered.connect(self.Save)
         self.actionExit.triggered.connect(self.Exit)
         self.actionAcerca_de.triggered.connect(self.about)
+        self.actionText_Colour.triggered.connect(lambda: self.change_text_coulur("Text"))
+        self.actionbackground_color.triggered.connect(lambda: self.change_text_coulur("Background"))
+        
+        self.actionBold.triggered.connect(lambda: self.text_format("Bold"))
+        self.actionItalic.triggered.connect(lambda: self.text_format("Italic"))
+        self.actionUnderline.triggered.connect(lambda: self.text_format("Underline"))
+
+
 
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
@@ -91,10 +99,7 @@ class EditorWindow(QMainWindow, text_ui):
             a0.accept()
         else:
             a0.ignore()
-        
-        
-
-
+            
     def Exit(self):        
         def Check(i):
             if i.text() == "Discard":
@@ -141,11 +146,32 @@ class EditorWindow(QMainWindow, text_ui):
         self.textEdit.setFontPointSize(self.doubleSpinBox.value())
 
         
-    # def change_size(self):
-    #     size = self.doubleSpinBox.value()
-    #     font = QFont()
-    #     font.setPointSize(size)
-    #     self.textEdit.setFont(font)
+    def change_text_coulur(self, value):
+        ColorD = QColorDialog(self)
+        if value is "Text":
+            ColorD.colorSelected.connect(self.textEdit.setTextColor)
+        elif value is "Background":
+            ColorD.colorSelected.connect(self.textEdit.setTextBackgroundColor)
+        ColorD.open()
+
+        
+
+    def text_format(self, value): 
+        # italic
+        # bold
+        # underline, etc
+        # print(f"Cambiar {value}")
+        if value is "Italic":
+            if not self.textEdit.fontItalic():
+                self.textEdit.setFontItalic(True)
+            else:
+                self.textEdit.setFontItalic(False)
+        elif value is "Underline":
+            if not self.textEdit.fontUnderline():
+                self.textEdit.setFontUnderline(True)
+            else:
+                self.textEdit.setFontUnderline(False)
+        pass
 
 
 

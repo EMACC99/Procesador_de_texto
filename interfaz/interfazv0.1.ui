@@ -52,6 +52,9 @@
     <property name="title">
      <string>Edit</string>
     </property>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="actionCut"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -74,6 +77,11 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionText_Colour"/>
+   <addaction name="actionbackground_color"/>
+   <addaction name="actionItalic"/>
+   <addaction name="actionBold"/>
+   <addaction name="actionUnderline"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -107,13 +115,27 @@
    <property name="text">
     <string>Save</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/exit.png</normaloff>:/newPrefix/iconos/exit.png</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
   </action>
   <action name="actionSave_as">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/save_as.png</normaloff>:/newPrefix/iconos/save_as.png</iconset>
+   </property>
    <property name="text">
     <string>Save as</string>
    </property>
@@ -121,6 +143,93 @@
   <action name="actionAcerca_de">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionText_Colour">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/font_color.png</normaloff>:/newPrefix/iconos/font_color.png</iconset>
+   </property>
+   <property name="text">
+    <string>Text Coulour</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/copy.png</normaloff>:/newPrefix/iconos/copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/paste.png</normaloff>:/newPrefix/iconos/paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/cut.png</normaloff>:/newPrefix/iconos/cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionItalic">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/italic.png</normaloff>:/newPrefix/iconos/italic.png</iconset>
+   </property>
+   <property name="text">
+    <string>Italic</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionBold">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/bold.png</normaloff>:/newPrefix/iconos/bold.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bold</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionUnderline">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/underline.png</normaloff>:/newPrefix/iconos/underline.png</iconset>
+   </property>
+   <property name="text">
+    <string>Underline</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
+   </property>
+  </action>
+  <action name="actionbackground_color">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/newPrefix/iconos/light_plus.png</normaloff>:/newPrefix/iconos/light_plus.png</iconset>
+   </property>
+   <property name="text">
+    <string>background color</string>
    </property>
   </action>
  </widget>
