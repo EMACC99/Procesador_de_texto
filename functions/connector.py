@@ -11,6 +11,8 @@ class EditorWindow(QMainWindow, text_ui):
     def __init__(self, parent = None, file = None):
         super(EditorWindow, self).__init__(parent)
         self.setupUi(self)
+        self.doubleSpinBox.setValue(12)
+        # self.fontComboBox.setWritingSystem()
 
         self.actionNew.triggered.connect(self.NewFile)
         self.actionOpen.triggered.connect(lambda: self.OpenFile(None))
@@ -21,6 +23,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
         self.textEdit.cursorPositionChanged.connect(self.updateFont)
+        # self.textEdit.cursorPositionChanged.connect(self.change_size)
 
         self.statusbar.showMessage("Ln 1, Col 1")
         self.fontComboBox.setEditable(False)
@@ -119,9 +122,7 @@ class EditorWindow(QMainWindow, text_ui):
             msg.setStandardButtons(QMessageBox.Save| QMessageBox.Discard| QMessageBox.Cancel)
             msg.setDefaultButton(QMessageBox.Save)
             msg.buttonClicked.connect(Check)
-            if msg.exec_() == True:
-                return True
-            else:
+            if msg.exec_() is not True:
                 return False
 
 
@@ -130,10 +131,21 @@ class EditorWindow(QMainWindow, text_ui):
         col = self.textEdit.textCursor().columnNumber() + 1
         self.statusbar.showMessage(f"Ln {line}, Col {col}")
 
+
     def updateFont(self):
-        FontFam = self.textEdit.currentFont().family()
+        Font = self.fontComboBox.currentFont()
+        FontFam = Font.family()
         indexOf = self.fontComboBox.findText(FontFam)
         self.fontComboBox.setCurrentIndex(indexOf)
+        self.textEdit.setCurrentFont(Font)
+        self.textEdit.setFontPointSize(self.doubleSpinBox.value())
+
+        
+    # def change_size(self):
+    #     size = self.doubleSpinBox.value()
+    #     font = QFont()
+    #     font.setPointSize(size)
+    #     self.textEdit.setFont(font)
 
 
 
