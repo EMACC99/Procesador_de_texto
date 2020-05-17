@@ -69,7 +69,7 @@ class EditorWindow(QMainWindow, text_ui):
             return
         
         if self.filename is None:
-            tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", "./")
+            tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())))
 
             if not ok:
                 return
@@ -84,18 +84,26 @@ class EditorWindow(QMainWindow, text_ui):
 
     def closeEvent(self, a0):
         # print("Puchaste x")
-        self.Exit()
-        a0.accept()
+        if self.Exit():
+            a0.accept()
+        else:
+            a0.ignore()
         
+        
+
 
     def Exit(self):        
         def Check(i):
-            if i.text() == "Salir":
+            if i.text() == "Discard":
                 sys.exit()
-            elif i.text() == "Guardar":
+                
+            elif i.text() == "Save":
                 self.Save()
                 sys.exit()
-        
+            elif i.text() == "Cancel":
+                print("cancel")
+                return False
+
         if not self.isWindowModified():
             sys.exit()
         else:
@@ -105,10 +113,16 @@ class EditorWindow(QMainWindow, text_ui):
             msg.setText("Salir sin guardar")
             msg.setInformativeText("Todos los cambios se perderan")
             msg.setWindowTitle("Advertencia")
-            msg.addButton(QPushButton("Salir"), QMessageBox.NoRole)
-            msg.addButton(QPushButton("Guardar"), QMessageBox.YesRole)
+            # msg.addButton(QPushButton("Salir"), QMessageBox.Discard)
+            # msg.addButton(QPushButton("Guardar"), QMessageBox.Save)
+            # msg.addButton(QPushButton("Cancel"), QMessageBox.Cancel)
+            msg.setStandardButtons(QMessageBox.Save| QMessageBox.Discard| QMessageBox.Cancel)
+            msg.setDefaultButton(QMessageBox.Save)
             msg.buttonClicked.connect(Check)
-            msg.exec_()
+            if msg.exec_() == True:
+                return True
+            else:
+                return False
 
 
     def UpdateLineCol(self):
@@ -120,6 +134,8 @@ class EditorWindow(QMainWindow, text_ui):
         FontFam = self.textEdit.currentFont().family()
         indexOf = self.fontComboBox.findText(FontFam)
         self.fontComboBox.setCurrentIndex(indexOf)
+
+
 
     def about(self):
         msg = QMessageBox(self)
