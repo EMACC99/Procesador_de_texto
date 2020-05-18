@@ -146,7 +146,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.textEdit.setFontPointSize(self.doubleSpinBox.value())
 
         
-    def change_text_coulur(self, value):
+    def change_text_colour(self, value):
         ColorD = QColorDialog(self)
         if value is "Text":
             ColorD.colorSelected.connect(self.textEdit.setTextColor)
