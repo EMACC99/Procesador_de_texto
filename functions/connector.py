@@ -19,8 +19,8 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionSave.triggered.connect(self.Save)
         self.actionExit.triggered.connect(self.Exit)
         self.actionAcerca_de.triggered.connect(self.about)
-        self.actionText_Colour.triggered.connect(lambda: self.change_text_coulur("Text"))
-        self.actionbackground_color.triggered.connect(lambda: self.change_text_coulur("Background"))
+        self.actionText_Colour.triggered.connect(lambda: self.change_text_colour("Text"))
+        self.actionbackground_color.triggered.connect(lambda: self.change_text_colour("Background"))
         
         self.actionBold.triggered.connect(lambda: self.text_format("Bold"))
         self.actionItalic.triggered.connect(lambda: self.text_format("Italic"))
