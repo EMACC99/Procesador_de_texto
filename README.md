@@ -3,11 +3,11 @@
 Procesador de texto 
 
 ## Integrantes del equipo:
-César Arcos González 
-Eduardo Manuel Ceja Cruz 
-Saul Armas Gamiño
-Pablo Francisco Fonseca Marquez
-Javier Navarro Espindola
+- César Arcos González 
+- Eduardo Manuel Ceja Cruz 
+- Saul Armas Gamiño
+- Pablo Francisco Fonseca Marquez
+- Javier Navarro Espindola
 
 ##Información de Contacto 
 racec9999gmail.com
