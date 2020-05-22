@@ -91,6 +91,7 @@ class EditorWindow(QMainWindow, text_ui):
 
         with open(self.filename, 'w') as f:
             f.write(self.textEdit.toPlainText())
+            
         self.setWindowModified(False)
 
     def closeEvent(self, a0):
@@ -179,5 +180,13 @@ class EditorWindow(QMainWindow, text_ui):
         msg = QMessageBox(self)
         msg.resize(240,110)
         msg.setWindowTitle("About")
-        msg.setText("Editor de texto para la materia de ingenieria de software uwu")
+        msg.setText("Editor de texto para la materia de ingenieria de software Elaborado por nosotros uwu")
         msg.show()
+
+
+    def about_qt(self):
+        msg = QMessageBox(self)
+        msg.resize(240.110)
+        msg.setWindowTitle("About QT")
+        msg.setText("Qt esta chido C:")
+        msg.show

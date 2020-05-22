@@ -61,6 +61,7 @@
      <string>Help</string>
     </property>
     <addaction name="actionAcerca_de"/>
+    <addaction name="actionAbout_QT"/>
    </widget>
    <addaction name="menufile"/>
    <addaction name="menuEdit"/>
@@ -79,9 +80,9 @@
    </attribute>
    <addaction name="actionText_Colour"/>
    <addaction name="actionbackground_color"/>
-   <addaction name="actionItalic"/>
    <addaction name="actionBold"/>
    <addaction name="actionUnderline"/>
+   <addaction name="actionItalic"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -226,10 +227,15 @@
   <action name="actionbackground_color">
    <property name="icon">
     <iconset resource="icons.qrc">
-     <normaloff>:/newPrefix/iconos/light_plus.png</normaloff>:/newPrefix/iconos/light_plus.png</iconset>
+     <normaloff>:/newPrefix/iconos/status_bar.png</normaloff>:/newPrefix/iconos/status_bar.png</iconset>
    </property>
    <property name="text">
     <string>background color</string>
+   </property>
+  </action>
+  <action name="actionAbout_QT">
+   <property name="text">
+    <string>About QT</string>
    </property>
   </action>
  </widget>
