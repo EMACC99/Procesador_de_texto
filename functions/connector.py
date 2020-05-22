@@ -171,7 +171,7 @@ class EditorWindow(QMainWindow, text_ui):
                 self.textEdit.setFontUnderline(True)
             else:
                 self.textEdit.setFontUnderline(False)
-        pass
+        
 
 
 
