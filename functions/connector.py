@@ -26,7 +26,8 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionItalic.triggered.connect(lambda: self.text_format("Italic"))
         self.actionUnderline.triggered.connect(lambda: self.text_format("Underline"))
 
-
+        self.actionCopy.triggered.connect(lambda: self.textEdit.copy())
+        self.actionPaste.triggered.connect(lambda: self.textEdit.paste() if self.textEdit.canPaste() else None)
 
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
@@ -173,6 +174,10 @@ class EditorWindow(QMainWindow, text_ui):
             else:
                 self.textEdit.setFontUnderline(False)
         
+
+
+
+
 
 
 
