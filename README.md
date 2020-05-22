@@ -3,18 +3,18 @@
 Procesador de texto 
 
 ## Integrantes del equipo:
--César Arcos González 
--Eduardo Manuel Ceja Cruz 
--Saul Armas Gamiño
--Pablo Francisco Fonseca Marquez
--Javier Navarro Espindola
+César Arcos González 
+Eduardo Manuel Ceja Cruz 
+Saul Armas Gamiño
+Pablo Francisco Fonseca Marquez
+Javier Navarro Espindola
 
 ##Información de Contacto 
--racec9999gmail.com
--lalitoceja@gmail.com
--luasikirfl@gmail.com
--fonseking21@gmail.com
--javojavojavojavo@gmail.com
+racec9999gmail.com
+lalitoceja@gmail.com
+luasikirfl@gmail.com
+fonseking21@gmail.com
+javojavojavojavo@gmail.com
 
 ## Licencia:
 MIT License
