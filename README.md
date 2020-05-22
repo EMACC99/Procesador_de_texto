@@ -10,7 +10,7 @@ Procesador de texto
 - Javier Navarro Espindola
 
 ## Información de Contacto 
-- racec9999gmail.com
+- racec9999@gmail.com
 - lalitoceja@gmail.com
 - luasikirfl@gmail.com
 - fonseking21@gmail.com
