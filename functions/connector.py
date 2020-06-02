@@ -1,6 +1,6 @@
 import json
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog, QPushButton 
 from PyQt5.QtGui import QFont, QPainter, QColor
 import sys
 import os
@@ -18,6 +18,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionOpen.triggered.connect(lambda: self.OpenFile(None))
         self.actionSave.triggered.connect(self.Save)
         self.actionExit.triggered.connect(self.Exit)
+        self.actionSave_as.triggered.connect(self.Save_as)
         self.actionAcerca_de.triggered.connect(self.about)
         self.actionText_Colour.triggered.connect(lambda: self.change_text_colour("Text"))
         self.actionbackground_color.triggered.connect(lambda: self.change_text_colour("Background"))
@@ -95,6 +96,25 @@ class EditorWindow(QMainWindow, text_ui):
             
         self.setWindowModified(False)
 
+
+    def Save_as(self):
+        tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())))
+
+        if not ok:
+            return
+
+        self.filename = tmpFile
+        self._baseFile = os.path.basename(self.filename)
+        
+        self.setWindowTitle(self._baseFile + self.titleTemplate)
+
+        with open(self.filename, 'w') as f:
+            f.write(self.textEdit.toPlainText())
+            
+        self.setWindowModified(False)
+
+
+
     def closeEvent(self, a0):
         # print("Puchaste x")
         if self.Exit():
@@ -104,14 +124,19 @@ class EditorWindow(QMainWindow, text_ui):
             
     def Exit(self):        
         def Check(i):
-            if i.text() == "Discard":
+            print(msg.buttonRole(i))
+            #if i.text() == "Discard"
+            if  msg.buttonRole(i) == 2:
                 sys.exit()
-                
-            elif i.text() == "Save":
+            
+            elif msg.buttonRole(i) == 0:
+            # i.text() == "Save    
                 self.Save()
                 sys.exit()
-            elif i.text() == "Cancel":
-                print("cancel")
+
+            elif msg.buttonRole(i) == 1:
+            #i.text() == "Save" or
+                # print("cancel")
                 return False
 
         if not self.isWindowModified():
@@ -123,12 +148,15 @@ class EditorWindow(QMainWindow, text_ui):
             msg.setText("Salir sin guardar")
             msg.setInformativeText("Todos los cambios se perderan")
             msg.setWindowTitle("Advertencia")
-            # msg.addButton(QPushButton("Salir"), QMessageBox.Discard)
-            # msg.addButton(QPushButton("Guardar"), QMessageBox.Save)
-            # msg.addButton(QPushButton("Cancel"), QMessageBox.Cancel)
+            
+            # msg.addButton(QMessageBox.Discard)
+            # msg.addButton(QMessageBox.Save )
+            # msg.addButton(QMessageBox.Cancel)
+            
             msg.setStandardButtons(QMessageBox.Save| QMessageBox.Discard| QMessageBox.Cancel)
             msg.setDefaultButton(QMessageBox.Save)
             msg.buttonClicked.connect(Check)
+            
             if msg.exec_() is not True:
                 return False
 
@@ -174,9 +202,6 @@ class EditorWindow(QMainWindow, text_ui):
             else:
                 self.textEdit.setFontUnderline(False)
         
-
-
-
 
 
 
