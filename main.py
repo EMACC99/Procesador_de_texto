@@ -1,10 +1,13 @@
 import os
 import sys
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtCore import QTranslator
 from functions.connector import EditorWindow
 
 if __name__ == '__main__':
     APP = QApplication(sys.argv)
+    APP.setApplicationName("Chukurh")
+
 
     openFile = None
 
