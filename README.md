@@ -20,8 +20,8 @@ Procesador de texto
 MIT License
 
 ## Introducción: 
-Repositorio creado para e proyecto final de la materia Administracion de proyectos el cual consiste en la elaboracion de un procesador de texto.
-## Información de instalacion y ejecucion:
+Repositorio creado para el proyecto final de la materia Administracion de proyectos, el cual consiste en la elaboración de un procesador de texto.
+## Información de instalación y ejecución:
  Para correrlo, se necesita la librería de PyQt5. Esta pudede conseguirse haciendo
  > pip install PyQt5
 
