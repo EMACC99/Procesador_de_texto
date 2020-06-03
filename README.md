@@ -23,7 +23,9 @@ MIT License
 Repositorio creado para el proyecto final de la materia Administracion de proyectos, el cual consiste en la elaboración de un procesador de texto.
 ## Información de instalación y ejecución:
  Para correrlo, se necesita la librería de PyQt5. Esta puede conseguirse haciendo
- > pip install PyQt5
+ > pip install PyQt5    
+ 
+*Si se tiene Anaconda instalado no instalar PyQt5, ya que Anaconda ya lo tiene y hacerlo puede ocasionar errores en la ejecución.    
 
 Para ejecutar el programa es
 
