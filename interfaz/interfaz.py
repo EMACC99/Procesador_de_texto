@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.textEdit)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 797, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 797, 20))
         self.menubar.setObjectName("menubar")
         self.menufile = QtWidgets.QMenu(self.menubar)
         self.menufile.setObjectName("menufile")
@@ -40,6 +40,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.toolBar = QtWidgets.QToolBar(MainWindow)
+        self.toolBar.setIconSize(QtCore.QSize(48, 48))
         self.toolBar.setObjectName("toolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.actionNew = QtWidgets.QAction(MainWindow)
@@ -168,4 +169,4 @@ class Ui_MainWindow(object):
         self.actionbackground_color.setText(_translate("MainWindow", "background color"))
         self.actionAbout_QT.setText(_translate("MainWindow", "About QT"))
 
-import interfaz.icons_rc
+import interfaz.iconos
