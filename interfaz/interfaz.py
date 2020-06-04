@@ -133,7 +133,7 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionBold)
         self.toolBar.addAction(self.actionUnderline)
         self.toolBar.addAction(self.actionItalic)
-
+        
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

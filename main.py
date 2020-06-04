@@ -8,7 +8,6 @@ if __name__ == '__main__':
     APP = QApplication(sys.argv)
     APP.setApplicationName("Chukurh")
 
-
     openFile = None
 
     if len(sys.argv) > 1:

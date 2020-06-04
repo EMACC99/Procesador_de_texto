@@ -1,11 +1,10 @@
 import json
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog, QPushButton 
-from PyQt5.QtGui import QFont, QPainter, QColor
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog, QPushButton, QAction
+from PyQt5.QtGui import QFont, QPainter, QColor, QTextCursor, QIcon, QPalette
 import sys
 import os
 from interfaz.interfaz import Ui_MainWindow as text_ui
-
 
 class EditorWindow(QMainWindow, text_ui):
     def __init__(self, parent = None, file = None):
@@ -14,12 +13,15 @@ class EditorWindow(QMainWindow, text_ui):
         self.doubleSpinBox.setValue(12)
         # self.fontComboBox.setWritingSystem()
 
+        backColor = QAction(QIcon("icons/backcolor.png"),"Change background color",self)
+
         self.actionNew.triggered.connect(self.NewFile)
         self.actionOpen.triggered.connect(lambda: self.OpenFile(None))
         self.actionSave.triggered.connect(self.Save)
         self.actionExit.triggered.connect(self.Exit)
         self.actionSave_as.triggered.connect(self.Save_as)
         self.actionAcerca_de.triggered.connect(self.about)
+        self.actionAbout_QT.triggered.connect(self.about_qt)
         self.actionText_Colour.triggered.connect(lambda: self.change_text_colour("Text"))
         self.actionbackground_color.triggered.connect(lambda: self.change_text_colour("Background"))
         
@@ -31,6 +33,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionPaste.triggered.connect(lambda: self.textEdit.paste() if self.textEdit.canPaste() else None)
 
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
+
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
         self.textEdit.cursorPositionChanged.connect(self.updateFont)
         # self.textEdit.cursorPositionChanged.connect(self.change_size)
@@ -40,9 +43,13 @@ class EditorWindow(QMainWindow, text_ui):
 
         self.toolBar.addWidget(self.fontComboBox)
         self.toolBar.addWidget(self.doubleSpinBox)
+        self.toolBar.addAction(backColor)
 
         self.titleTemplate = "[*]"
         self.filename = file
+
+        backColor.triggered.connect(self.FontBackColor)
+
 
         if file is not None and not os.path.exists(self.filename):
             self.filename = None
@@ -53,6 +60,7 @@ class EditorWindow(QMainWindow, text_ui):
             self.OpenFile(self.filename)
             self._baseFile  = os.path.basename(self.filename)
 
+        print(self.windowTitle())
 
     def NewFile(self):
         self.filename = None
@@ -201,9 +209,34 @@ class EditorWindow(QMainWindow, text_ui):
                 self.textEdit.setFontUnderline(True)
             else:
                 self.textEdit.setFontUnderline(False)
+    
+
+    def search_and_replace(self, word, newWord = None, replace = False):
+
+        self.textEdit.textCursor().beginEditBlock()
+        doc = self.textEdit.document()
+        cursor = QTextCursor(doc)
+        while True:
+            cursor = doc.find(word, cursor)
+            if cursor.isNull():
+                break
+            if replace and newWord is not None:
+                cursor.insertText(newWord)
+
+        self.textEdit.textCursor().endEditBlock()
+
+
+
+    def FontBackColor(self):
+        c = self.textEdit.viewport().palette()
+        ColorD = QColorDialog(self)
+        # ColorD.colorSelected.connect(c.setColor(self.textEdit.viewport().backgroudRole()))
+        # ColorD.exec()
+        # print(ColorD.currentColor())
+        c.setColor(self.textEdit.viewport().backgroundRole(), ColorD.getColor())
+        self.textEdit.viewport().setPalette(c)
+
         
-
-
 
 
     def about(self):
@@ -216,7 +249,30 @@ class EditorWindow(QMainWindow, text_ui):
 
     def about_qt(self):
         msg = QMessageBox(self)
-        msg.resize(240.110)
-        msg.setWindowTitle("About QT")
-        msg.setText("Qt esta chido C:")
-        msg.show
+        msg.setWindowTitle( "About Qt\n")
+        msg.setText("<p>Qt is a C++ toolkit for cross-platform application "
+        "development.</p>"
+        "<p>Qt provides single-source portability across all major desktop "
+        "operating systems. It is also available for embedded Linux and other "
+        "embedded and mobile operating systems.</p>"
+        "<p>Qt is available under three different licensing options designed "
+        "to accommodate the needs of our various users.</p>"
+        "<p>Qt licensed under our commercial license agreement is appropriate "
+        "for development of proprietary/commercial software where you do not "
+        "want to share any source code with third parties or otherwise cannot "
+        "comply with the terms of the GNU LGPL version 3 or GNU LGPL version 2.1.</p>"
+        "<p>Qt licensed under the GNU LGPL version 3 is appropriate for the "
+        "development of Qt&nbsp;applications provided you can comply with the terms "
+        "and conditions of the GNU LGPL version 3.</p>"
+        "<p>Qt licensed under the GNU LGPL version 2.1 is appropriate for the "
+        "development of Qt&nbsp;applications provided you can comply with the terms "
+        "and conditions of the GNU LGPL version 2.1.</p>"
+        "<p>Please see <a href=http://qt.io/licensing>Licensing</a> "
+        "for an overview of Qt licensing.</p>"
+        "<p>Copyright (C) 2019 The Qt Company Ltd and other "
+        "contributors.</p>"
+        "<p>Qt and the Qt logo are trademarks of The Qt Company Ltd.</p>"
+        "<p>Qt is The Qt Company Ltd product developed as an open source "
+        "project. See <a href='http://qt.io'>here </a> for more information.</p>")
+        
+        msg.show()
