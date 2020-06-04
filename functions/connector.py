@@ -32,11 +32,14 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionCopy.triggered.connect(lambda: self.textEdit.copy())
         self.actionPaste.triggered.connect(lambda: self.textEdit.paste() if self.textEdit.canPaste() else None)
 
+        self.textEdit.setUndoRedoEnabled(True)
+
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
+
 
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
         self.textEdit.cursorPositionChanged.connect(self.updateFont)
-        # self.textEdit.cursorPositionChanged.connect(self.change_size)
+        self.textEdit.cursorPositionChanged.connect(self.autosave)
 
         self.statusbar.showMessage("Ln 1, Col 1")
         self.fontComboBox.setEditable(False)
@@ -61,6 +64,22 @@ class EditorWindow(QMainWindow, text_ui):
             self._baseFile  = os.path.basename(self.filename)
 
         print(self.windowTitle())
+
+
+    def autosave(self): # no sirve aun pero no rompe nada, si pueden moverle que chido
+        import time
+
+        print("autosave")
+
+        time1 = time.time()
+        while time.time() - time1 < 5:
+            print (time.time())
+            if self.textEdit.textChanged:
+                return            
+        
+        self.Save()
+        return
+
 
     def NewFile(self):
         self.filename = None
