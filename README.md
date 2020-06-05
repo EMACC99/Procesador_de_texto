@@ -6,7 +6,7 @@ Procesador de texto
 - César Arcos González 
 - Eduardo Manuel Ceja Cruz 
 - Saul Armas Gamiño
-- Pablo Francisco Fonseca Marquez
+- Pablo Francisco Fonseca Márquez
 - Javier Navarro Espindola
 
 ## Información de Contacto 
