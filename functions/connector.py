@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import json
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog, QPushButton, QAction
@@ -5,6 +7,7 @@ from PyQt5.QtGui import QFont, QPainter, QColor, QTextCursor, QIcon, QPalette
 import sys
 import os
 from interfaz.interfaz import Ui_MainWindow as text_ui
+import io
 
 class EditorWindow(QMainWindow, text_ui):
     def __init__(self, parent = None, file = None):
@@ -118,7 +121,7 @@ class EditorWindow(QMainWindow, text_ui):
         
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
-        with open(self.filename, 'w') as f:
+        with io.open(self.filename, 'w', encoding='utf8') as f:
             f.write(self.textEdit.toPlainText())
             
         self.setWindowModified(False)
@@ -135,7 +138,7 @@ class EditorWindow(QMainWindow, text_ui):
         
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
-        with open(self.filename, 'w') as f:
+        with io.open(self.filename, 'w', encoding='utf8') as f:
             f.write(self.textEdit.toPlainText())
             
         self.setWindowModified(False)
