@@ -16,7 +16,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.doubleSpinBox.setValue(12)
         # self.fontComboBox.setWritingSystem()
 
-        backColor = QAction(QIcon("icons/backcolor.png"),"Change background color",self)
+        # backColor = QAction(QIcon("icons/backcolor.png"),"Change background color",self)
 
         self.actionNew.triggered.connect(self.NewFile)
         self.actionOpen.triggered.connect(lambda: self.OpenFile(None))
@@ -49,12 +49,12 @@ class EditorWindow(QMainWindow, text_ui):
 
         self.toolBar.addWidget(self.fontComboBox)
         self.toolBar.addWidget(self.doubleSpinBox)
-        self.toolBar.addAction(backColor)
+        # self.toolBar.addAction(backColor)
 
         self.titleTemplate = "[*]"
         self.filename = file
 
-        backColor.triggered.connect(self.FontBackColor)
+        self.actionCambiar_Fondo.triggered.connect(self.FontBackColor)
 
 
         if file is not None and not os.path.exists(self.filename):

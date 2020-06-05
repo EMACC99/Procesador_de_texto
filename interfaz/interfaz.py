@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.textEdit)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 797, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 797, 21))
         self.menubar.setObjectName("menubar")
         self.menufile = QtWidgets.QMenu(self.menubar)
         self.menufile.setObjectName("menufile")
@@ -112,6 +112,8 @@ class Ui_MainWindow(object):
         self.actionbackground_color.setObjectName("actionbackground_color")
         self.actionAbout_QT = QtWidgets.QAction(MainWindow)
         self.actionAbout_QT.setObjectName("actionAbout_QT")
+        self.actionCambiar_Fondo = QtWidgets.QAction(MainWindow)
+        self.actionCambiar_Fondo.setObjectName("actionCambiar_Fondo")
         self.menufile.addSeparator()
         self.menufile.addSeparator()
         self.menufile.addAction(self.actionNew)
@@ -133,7 +135,8 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionBold)
         self.toolBar.addAction(self.actionUnderline)
         self.toolBar.addAction(self.actionItalic)
-        
+        self.toolBar.addAction(self.actionCambiar_Fondo)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -168,5 +171,6 @@ class Ui_MainWindow(object):
         self.actionUnderline.setShortcut(_translate("MainWindow", "Ctrl+U"))
         self.actionbackground_color.setText(_translate("MainWindow", "background color"))
         self.actionAbout_QT.setText(_translate("MainWindow", "About QT"))
+        self.actionCambiar_Fondo.setText(_translate("MainWindow", "Cambiar Fondo"))
 
 import interfaz.iconos
