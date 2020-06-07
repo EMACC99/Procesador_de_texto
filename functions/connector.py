@@ -102,7 +102,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
         self.textEdit.clear()
-        with open(self.filename, "r") as f:
+        with io.open(self.filename, "r", encoding='utf8') as f:
             self.textEdit.setPlainText(f.read())
         
         self.setWindowModified(False)
