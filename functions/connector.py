@@ -284,7 +284,7 @@ class EditorWindow(QMainWindow, text_ui):
         "\n"
         "Editor de texto enfocado a la comunidad hispana\n"
         "Chukurh proviene del Purépecha, traducido al español como 'hoja'\n"
-        "*Chukurh está licenciado bajo: MIT License*")
+        "*Procesador de texto licenciado bajo: MIT License*")
         msg.show()
 
 
