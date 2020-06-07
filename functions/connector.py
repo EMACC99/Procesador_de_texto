@@ -265,7 +265,17 @@ class EditorWindow(QMainWindow, text_ui):
         msg = QMessageBox(self)
         msg.resize(240,110)
         msg.setWindowTitle("About")
-        msg.setText("Editor de texto para la materia de ingenieria de software Elaborado por nosotros uwu")
+        msg.setText("Licenciatura en Tecnologías para la Información en Ciencias\n"
+        "Proyecto Final, Ingeniería de Software 2020-2\n"
+        "ENES Unidad Morelia, UNAM\n"
+        "\n"
+        "Arcos González César\n"
+        "Armas Gamiño Saúl\n"
+        "Ceja Cruz Eduardo Manuel\n"
+        "Fonseca Márquez Pablo Francisco\n"
+        "Navarro Espindola Javier\n"
+        "\n"
+        "*Chukurh está licenciado bajo: MIT License*")
         msg.show()
 
 
