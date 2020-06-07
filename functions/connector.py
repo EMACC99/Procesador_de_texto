@@ -102,7 +102,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
         self.textEdit.clear()
-        with io.open(self.filename, "r", encoding='utf8') as f:
+        with io.open(self.filename, 'r', encoding='utf8') as f:
             self.textEdit.setPlainText(f.read())
         
         self.setWindowModified(False)
@@ -187,6 +187,13 @@ class EditorWindow(QMainWindow, text_ui):
             msg.setDefaultButton(QMessageBox.Save)
             msg.buttonClicked.connect(Check)
             
+            buttonY = msg.button(QMessageBox.Save)
+            buttonY.setText('Guardar')
+            buttonN = msg.button(QMessageBox.Discard)
+            buttonN.setText('Descartar')
+            buttonO = msg.button(QMessageBox.Cancel)
+            buttonO.setText('Cancelar')
+            
             if msg.exec_() is not True:
                 return False
 
@@ -264,7 +271,7 @@ class EditorWindow(QMainWindow, text_ui):
     def about(self):
         msg = QMessageBox(self)
         msg.resize(240,110)
-        msg.setWindowTitle("About")
+        msg.setWindowTitle("Chukurh")
         msg.setText("Licenciatura en Tecnologías para la Información en Ciencias\n"
         "Proyecto Final, Ingeniería de Software 2020-2\n"
         "ENES Unidad Morelia, UNAM\n"
@@ -275,6 +282,8 @@ class EditorWindow(QMainWindow, text_ui):
         "Fonseca Márquez Pablo Francisco\n"
         "Navarro Espindola Javier\n"
         "\n"
+        "Editor de texto enfocado a la comunidad hispana\n"
+        "Chukurh proviene del Purépecha, traducido al español como 'hoja'\n"
         "*Chukurh está licenciado bajo: MIT License*")
         msg.show()
 
@@ -306,5 +315,5 @@ class EditorWindow(QMainWindow, text_ui):
         "<p>Qt and the Qt logo are trademarks of The Qt Company Ltd.</p>"
         "<p>Qt is The Qt Company Ltd product developed as an open source "
         "project. See <a href='http://qt.io'>here </a> for more information.</p>")
-        
         msg.show()
+        
