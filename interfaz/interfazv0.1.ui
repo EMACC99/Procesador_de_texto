@@ -32,12 +32,12 @@
      <x>0</x>
      <y>0</y>
      <width>797</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menufile">
     <property name="title">
-     <string>File</string>
+     <string>Archivo</string>
     </property>
     <addaction name="separator"/>
     <addaction name="separator"/>
@@ -50,7 +50,7 @@
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>Edit</string>
+     <string>Editar</string>
     </property>
     <addaction name="actionCopy"/>
     <addaction name="actionPaste"/>
@@ -58,7 +58,7 @@
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>Ayuda</string>
     </property>
     <addaction name="actionAcerca_de"/>
     <addaction name="actionAbout_QT"/>
@@ -86,7 +86,6 @@
    </attribute>
    <addaction name="actionText_Colour"/>
    <addaction name="actionbackground_color"/>
-   <addaction name="actionBold"/>
    <addaction name="actionUnderline"/>
    <addaction name="actionItalic"/>
    <addaction name="actionCambiar_Fondo"/>
@@ -97,7 +96,7 @@
      <normaloff>:/newPrefix/iconos/new.png</normaloff>:/newPrefix/iconos/new.png</iconset>
    </property>
    <property name="text">
-    <string>New</string>
+    <string>Nuevo</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -109,7 +108,7 @@
      <normaloff>:/newPrefix/iconos/open.png</normaloff>:/newPrefix/iconos/open.png</iconset>
    </property>
    <property name="text">
-    <string>Open</string>
+    <string>Abrir</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -121,7 +120,7 @@
      <normaloff>:/newPrefix/iconos/save.png</normaloff>:/newPrefix/iconos/save.png</iconset>
    </property>
    <property name="text">
-    <string>Save</string>
+    <string>Guardar</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -133,7 +132,7 @@
      <normaloff>:/newPrefix/iconos/exit.png</normaloff>:/newPrefix/iconos/exit.png</iconset>
    </property>
    <property name="text">
-    <string>Exit</string>
+    <string>Salir</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -145,12 +144,12 @@
      <normaloff>:/newPrefix/iconos/save_as.png</normaloff>:/newPrefix/iconos/save_as.png</iconset>
    </property>
    <property name="text">
-    <string>Save as</string>
+    <string>Guardar como</string>
    </property>
   </action>
   <action name="actionAcerca_de">
    <property name="text">
-    <string>About</string>
+    <string>Acerca de</string>
    </property>
   </action>
   <action name="actionText_Colour">
@@ -168,7 +167,10 @@
      <normaloff>:/newPrefix/iconos/copy.png</normaloff>:/newPrefix/iconos/copy.png</iconset>
    </property>
    <property name="text">
-    <string>Copy</string>
+    <string>Copiar</string>
+   </property>
+   <property name="iconText">
+    <string>Copiar</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+C</string>
@@ -180,7 +182,10 @@
      <normaloff>:/newPrefix/iconos/paste.png</normaloff>:/newPrefix/iconos/paste.png</iconset>
    </property>
    <property name="text">
-    <string>Paste</string>
+    <string>Pegar</string>
+   </property>
+   <property name="iconText">
+    <string>Pegar</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+V</string>
@@ -192,7 +197,7 @@
      <normaloff>:/newPrefix/iconos/cut.png</normaloff>:/newPrefix/iconos/cut.png</iconset>
    </property>
    <property name="text">
-    <string>Cut</string>
+    <string>Cortar</string>
    </property>
   </action>
   <action name="actionItalic">
@@ -242,7 +247,7 @@
   </action>
   <action name="actionAbout_QT">
    <property name="text">
-    <string>About QT</string>
+    <string>Acerca de QT</string>
    </property>
   </action>
   <action name="actionCambiar_Fondo">
