@@ -128,8 +128,18 @@ class EditorWindow(QMainWindow, text_ui):
             if ".txt" in self.filename:
                 f.write(self.textEdit.toPlainText())
             else:
-                
-                f.write(self.textEdit.toHtml())
+                color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
+                html = self.textEdit.toHtml()
+                html = html.splitlines()
+                temp  = html[3]
+                body_style = temp[:-2] + color + temp[-2:]
+                html_final = ''
+                for i in html:
+                    if i == temp:
+                        html_final += body_style + '\n'
+                    else:
+                        html_final += i + '\n'
+                f.write(html_final)
             
             
         self.setWindowModified(False)
@@ -148,7 +158,21 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
         with io.open(self.filename, 'w', encoding='utf8') as f:
-            f.write(self.textEdit.toPlainText())
+            if ".txt" in self.filename:
+                f.write(self.textEdit.toPlainText())
+            else:
+                color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
+                html = self.textEdit.toHtml()
+                html = html.splitlines()
+                temp  = html[3]
+                body_style = temp[:-2] + color + temp[-2:]
+                html_final = ''
+                for i in html:
+                    if i == temp:
+                        html_final += body_style + '\n'
+                    else:
+                        html_final += i + '\n'
+                f.write(html_final)
             
         self.setWindowModified(False)
 
@@ -273,7 +297,7 @@ class EditorWindow(QMainWindow, text_ui):
         # print(ColorD.currentColor())
         c.setColor(self.textEdit.viewport().backgroundRole(), ColorD.getColor())
         self.textEdit.viewport().setPalette(c)
-        print(self.textEdit.viewport().palette().color(c).name())
+        print(self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name())
         # print(c.name())
 
         
