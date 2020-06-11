@@ -54,7 +54,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.titleTemplate = "[*]"
         self.filename = file
 
-        self.actionCambiar_Fondo.triggered.connect(self.FontBackColor)
+        self.actionCambiar_Fondo.triggered.connect(self.Backgroud_Color)
 
 
         if file is not None and not os.path.exists(self.filename):
@@ -93,7 +93,7 @@ class EditorWindow(QMainWindow, text_ui):
 
     def OpenFile(self,file):
         if file is None:
-            tmpFile, ok = QFileDialog.getOpenFileName(self, "Open File", str(os.path.abspath(os.getcwd())))
+            tmpFile, ok = QFileDialog.getOpenFileName(self, "Open File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
             if not ok:
                 return
             self.filename = tmpFile
@@ -103,7 +103,10 @@ class EditorWindow(QMainWindow, text_ui):
 
         self.textEdit.clear()
         with io.open(self.filename, 'r', encoding='utf8') as f:
-            self.textEdit.setPlainText(f.read())
+            if ".txt" in self.filename:
+                self.textEdit.setPlainText(f.read())
+            else:
+                self.textEdit.setHtml(f.read())
         
         self.setWindowModified(False)
 
@@ -112,8 +115,8 @@ class EditorWindow(QMainWindow, text_ui):
             return
         
         if self.filename is None:
-            tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())))
-
+            
+            tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
             if not ok:
                 return
             self.filename = tmpFile
@@ -122,13 +125,19 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
         with io.open(self.filename, 'w', encoding='utf8') as f:
-            f.write(self.textEdit.toPlainText())
+            if ".txt" in self.filename:
+                f.write(self.textEdit.toPlainText())
+            else:
+                
+                f.write(self.textEdit.toHtml())
+            
             
         self.setWindowModified(False)
 
 
     def Save_as(self):
-        tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())))
+        # QFileDialog.setDefaultSuffix(QFileDialog,".chk")
+        tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
 
         if not ok:
             return
@@ -256,7 +265,7 @@ class EditorWindow(QMainWindow, text_ui):
 
 
 
-    def FontBackColor(self):
+    def Backgroud_Color(self):
         c = self.textEdit.viewport().palette()
         ColorD = QColorDialog(self)
         # ColorD.colorSelected.connect(c.setColor(self.textEdit.viewport().backgroudRole()))
@@ -264,6 +273,8 @@ class EditorWindow(QMainWindow, text_ui):
         # print(ColorD.currentColor())
         c.setColor(self.textEdit.viewport().backgroundRole(), ColorD.getColor())
         self.textEdit.viewport().setPalette(c)
+        print(self.textEdit.viewport().palette().color(c).name())
+        # print(c.name())
 
         
 

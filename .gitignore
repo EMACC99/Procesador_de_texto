@@ -6,3 +6,6 @@ dist/
 *.pyc
 vpad.py
 vpad.zip
+*.chk
+*.html
+.vscode/settings.json
