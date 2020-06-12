@@ -93,9 +93,11 @@ class EditorWindow(QMainWindow, text_ui):
 
     def NewFile(self, existing=False):
         if existing:
-            if not self.Exit():
+            choice = self.Exit()
+            if choice is 0:
                 self.Save()
-            
+            elif choice is 1:
+                return
         self.filename = None
         self._baseFile = None
         self.setWindowTitle(f"Untitled {self.titleTemplate}")
@@ -113,6 +115,7 @@ class EditorWindow(QMainWindow, text_ui):
                 return
             
             self.filename = tmpFile
+            
         self._baseFile = os.path.basename(self.filename)
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
@@ -209,33 +212,18 @@ class EditorWindow(QMainWindow, text_ui):
 
     def closeEvent(self, a0):
         # print("Puchaste x")
-        if self.Exit():
-            # print(True)
+        if self.Exit() is 2 or 0:
+            print("Adios")
             a0.accept()
         else:
-            # print(False)
+            print("Nel")
             a0.ignore()
             
     def Exit(self):        
-        def Check(i):
-            print(msg.buttonRole(i))
-            #if i.text() == "Discard"
-            if  msg.buttonRole(i) == 2:
-                return True
-                # sys.exit()
-            
-            elif msg.buttonRole(i) == 0:
-            # i.text() == "Save    
-                self.Save()
-                # sys.exit()
-                return True
-            elif msg.buttonRole(i) == 1:
-            #i.text() == "Save" or
-                # print("cancel")
-                return False
 
         if not self.isWindowModified():
-            sys.exit()
+            return True
+            # sys.exit()
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -250,7 +238,7 @@ class EditorWindow(QMainWindow, text_ui):
             
             msg.setStandardButtons(QMessageBox.Save| QMessageBox.Discard| QMessageBox.Cancel)
             msg.setDefaultButton(QMessageBox.Save)
-            msg.buttonClicked.connect(Check)
+            # msg.buttonClicked.connect(Check)
             
             buttonY = msg.button(QMessageBox.Save)
             buttonY.setText('Guardar')
@@ -259,12 +247,26 @@ class EditorWindow(QMainWindow, text_ui):
             buttonO = msg.button(QMessageBox.Cancel)
             buttonO.setText('Cancelar')
             
-            if msg.exec_() is False:
-                # print(False)
-                return False
-            else:
-                # print(True)
-                return True
+            if msg.exec():
+                if msg.buttonRole(msg.clickedButton())== 2:
+                    print("Discard")
+                    return 2
+                elif msg.buttonRole(msg.clickedButton()) == 0:
+                    # i.text() == "Save    
+                    print("Save")
+                    self.Save()
+                    # sys.exit()
+                    return 0
+                elif msg.buttonRole(msg.clickedButton()) == 1:
+                    #i.text() == "cancel"
+                    print("cancel")
+                    print(False)
+                    return 1
+
+
+
+
+
 
     def UpdateLineCol(self):
         line = self.textEdit.textCursor().blockNumber() + 1
