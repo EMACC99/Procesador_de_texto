@@ -336,6 +336,7 @@ class EditorWindow(QMainWindow, text_ui):
         "Fonseca Márquez Pablo Francisco\n"
         "Navarro Espindola Javier\n"
         "\n"
+        "El instructivo esta en la página del programa: https://bit.ly/2UCPvpv \n"
         "Editor de texto enfocado a la comunidad hispana\n"
         "Chukurh proviene del Purépecha, traducido al español como 'hoja'\n"
         "*Procesador de texto licenciado bajo: MIT License*")
