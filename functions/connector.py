@@ -9,6 +9,8 @@ import os
 from interfaz.interfaz import Ui_MainWindow as text_ui
 import io
 
+
+
 class EditorWindow(QMainWindow, text_ui):
     def __init__(self, parent = None, file = None):
         super(EditorWindow, self).__init__(parent)
@@ -18,11 +20,15 @@ class EditorWindow(QMainWindow, text_ui):
 
         # backColor = QAction(QIcon("icons/backcolor.png"),"Change background color",self)
 
-        self.actionNew.triggered.connect(self.NewFile)
+        self.actionNew.triggered.connect(lambda: self.NewFile(existing=True))
+        # self.actionNew.triggered.connect(lambda: NewFile(self, self.titleTemplate,  existing=True))
         self.actionOpen.triggered.connect(lambda: self.OpenFile(None))
+        # self.actionOpen.triggered.connect(lambda: OpenFile(self, None))
         self.actionSave.triggered.connect(self.Save)
+        # self.actionSave.triggered.connect(lambda: Save(self))
         self.actionExit.triggered.connect(self.Exit)
         self.actionSave_as.triggered.connect(self.Save_as)
+        # self.actionSave_as.triggered.connect(lambda: Save_as(self))
         self.actionAcerca_de.triggered.connect(self.about)
         self.actionAbout_QT.triggered.connect(self.about_qt)
         self.actionText_Colour.triggered.connect(lambda: self.change_text_colour("Text"))
@@ -85,7 +91,11 @@ class EditorWindow(QMainWindow, text_ui):
         return
 
 
-    def NewFile(self):
+    def NewFile(self, existing=False):
+        if existing:
+            if not self.Exit():
+                self.Save()
+            
         self.filename = None
         self._baseFile = None
         self.setWindowTitle(f"Untitled {self.titleTemplate}")
@@ -200,8 +210,10 @@ class EditorWindow(QMainWindow, text_ui):
     def closeEvent(self, a0):
         # print("Puchaste x")
         if self.Exit():
+            # print(True)
             a0.accept()
         else:
+            # print(False)
             a0.ignore()
             
     def Exit(self):        
@@ -209,13 +221,14 @@ class EditorWindow(QMainWindow, text_ui):
             print(msg.buttonRole(i))
             #if i.text() == "Discard"
             if  msg.buttonRole(i) == 2:
-                sys.exit()
+                return True
+                # sys.exit()
             
             elif msg.buttonRole(i) == 0:
             # i.text() == "Save    
                 self.Save()
-                sys.exit()
-
+                # sys.exit()
+                return True
             elif msg.buttonRole(i) == 1:
             #i.text() == "Save" or
                 # print("cancel")
@@ -246,9 +259,12 @@ class EditorWindow(QMainWindow, text_ui):
             buttonO = msg.button(QMessageBox.Cancel)
             buttonO.setText('Cancelar')
             
-            if msg.exec_() is not True:
+            if msg.exec_() is False:
+                # print(False)
                 return False
-
+            else:
+                # print(True)
+                return True
 
     def UpdateLineCol(self):
         line = self.textEdit.textCursor().blockNumber() + 1
