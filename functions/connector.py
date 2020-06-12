@@ -109,9 +109,11 @@ class EditorWindow(QMainWindow, text_ui):
         with io.open(self.filename, 'r', encoding='utf8') as f:
             if ".txt" in self.filename:
                 self.textEdit.setPlainText(f.read())
-            else:
+            elif ".html" or ".chk" in self.filename:
                 self.textEdit.setHtml(f.read())
-        
+            else:
+                self.textEdit.setPlainText(f.read())
+
         self.setWindowModified(False)
 
     def Save(self):
@@ -135,7 +137,7 @@ class EditorWindow(QMainWindow, text_ui):
         with io.open(self.filename, 'w', encoding='utf8') as f:
             if ".txt" in self.filename:
                 f.write(self.textEdit.toPlainText())
-            else:
+            elif ".chk" or ".html" in self.filename:
                 color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
                 html = self.textEdit.toHtml()
                 html = html.splitlines()
@@ -148,7 +150,9 @@ class EditorWindow(QMainWindow, text_ui):
                     else:
                         html_final += i + '\n'
                 f.write(html_final)
-            
+            else:
+                f.write(self.textEdit.toPlainText())
+
             
         self.setWindowModified(False)
 
@@ -172,7 +176,7 @@ class EditorWindow(QMainWindow, text_ui):
         with io.open(self.filename, 'w', encoding='utf8') as f:
             if ".txt" in self.filename:
                 f.write(self.textEdit.toPlainText())
-            else:
+            elif ".chk" or ".html" in self.filename:
                 color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
                 html = self.textEdit.toHtml()
                 html = html.splitlines()
@@ -185,6 +189,8 @@ class EditorWindow(QMainWindow, text_ui):
                     else:
                         html_final += i + '\n'
                 f.write(html_final)
+            else:
+                f.write(self.textEdit.toPlainText())
             
         self.setWindowModified(False)
 
