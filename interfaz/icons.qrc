@@ -23,6 +23,7 @@
     <file>iconos/save.png</file>
     <file>iconos/status_bar.png</file>
     <file>iconos/tool_bar.png</file>
+    <file>iconos/fondo.png</file>
     <file>iconos/underline.png</file>
 <file>iconos/save_as.png</file>
   </qresource>
