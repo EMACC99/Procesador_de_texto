@@ -325,7 +325,7 @@ class EditorWindow(QMainWindow, text_ui):
     def about(self):
         msg = QMessageBox(self)
         msg.resize(240,110)
-        msg.setWindowTitle("Chukurh")
+        msg.setWindowTitle("Chukurh\n")
         msg.setText("Licenciatura en Tecnologías para la Información en Ciencias\n"
         "Proyecto Final, Ingeniería de Software 2020-2\n"
         "ENES Unidad Morelia, UNAM\n"
@@ -336,7 +336,8 @@ class EditorWindow(QMainWindow, text_ui):
         "Fonseca Márquez Pablo Francisco\n"
         "Navarro Espindola Javier\n"
         "\n"
-        "El instructivo esta en la página del programa: https://bit.ly/2UCPvpv \n"
+        "El instructivo está en la página del programa: https://bit.ly/2UCPvpv \n"
+        "\n"
         "Editor de texto enfocado a la comunidad hispana\n"
         "Chukurh proviene del Purépecha, traducido al español como 'hoja'\n"
         "*Procesador de texto licenciado bajo: MIT License*")
@@ -345,29 +346,28 @@ class EditorWindow(QMainWindow, text_ui):
 
     def about_qt(self):
         msg = QMessageBox(self)
-        msg.setWindowTitle( "About Qt\n")
-        msg.setText("<p>Qt is a C++ toolkit for cross-platform application "
-        "development.</p>"
-        "<p>Qt provides single-source portability across all major desktop "
-        "operating systems. It is also available for embedded Linux and other "
-        "embedded and mobile operating systems.</p>"
-        "<p>Qt is available under three different licensing options designed "
-        "to accommodate the needs of our various users.</p>"
-        "<p>Qt licensed under our commercial license agreement is appropriate "
-        "for development of proprietary/commercial software where you do not "
-        "want to share any source code with third parties or otherwise cannot "
-        "comply with the terms of the GNU LGPL version 3 or GNU LGPL version 2.1.</p>"
-        "<p>Qt licensed under the GNU LGPL version 3 is appropriate for the "
-        "development of Qt&nbsp;applications provided you can comply with the terms "
-        "and conditions of the GNU LGPL version 3.</p>"
-        "<p>Qt licensed under the GNU LGPL version 2.1 is appropriate for the "
-        "development of Qt&nbsp;applications provided you can comply with the terms "
-        "and conditions of the GNU LGPL version 2.1.</p>"
-        "<p>Please see <a href=http://qt.io/licensing>Licensing</a> "
-        "for an overview of Qt licensing.</p>"
-        "<p>Copyright (C) 2019 The Qt Company Ltd and other "
-        "contributors.</p>"
-        "<p>Qt and the Qt logo are trademarks of The Qt Company Ltd.</p>"
-        "<p>Qt is The Qt Company Ltd product developed as an open source "
-        "project. See <a href='http://qt.io'>here </a> for more information.</p>")
+        msg.setWindowTitle( "Acerca de Qt\n")
+        msg.setText("<p>Qt es una herramienta de desarrollo de aplicación " 
+        "multiplataforma de C++.</p>"
+        "<p>Qt proporciona una portabilidad de fuente única a través de todos los sistemas "
+        "operativos. También se encuentra disponible para sistemas embebidos como Linux y otros; "
+        "Incluso funciona con sistemas operativos de celular.</p>"
+        "<p>Qt se encuentra disponible bajo tres diferentes opciones de licencia, "
+        "diseñadas para encajar en las necesidades de distintos usuarios</p>"
+        "<p>Debido a su acuerdo de licencia comercial, Qt es apropiado para el desarrollo "
+        "de software, ya sea propio o comercial, donde no se quiere compartir ningún tipo "
+        "de fuente de código con nadie externo al proyecto o si se da el caso que no cumple "
+        "con los términos de GNU LGLP versión 3 o GNU LGPL versión 2.1.</p>"
+        "<p>Licenciar Qt bajo GNU LGPL versión 3 es apropiado para el desarrollo de Qt&nbsp; "
+        "aplicaciones proporcionadas deben cumplir con los términos y condiciones "
+        "de GNU LGLP versión 3.</p>"
+        "<p>Licenciar Qt bajo GNU LGPL versión 2.1 es apropiado para el desarrollo de Qt&nbsp; "
+        "aplicaciones proporcionadas deben cumplir con los términos y condiciones "
+        "de GNU LGLP versión 2.1.</p>"
+        "<p>Por favor, visita <a href=http://qt.io/licensing>Licensing</a> para "
+        "una visión general de la licencia Qt.</p>"
+        "<p>Derechos de autor (C) 2019, Qt Company Ltd y otros contribuidores.</p>"
+        "<p>Qt y el logo de Qt son marcas registradas de Qt Company Ltd.</p>"
+        "<p>Qt es producto desarrollado por Qt Company Ltd como un proyecto de fuente abierta. "
+        "Visitar: <a href='http://qt.io'>aquí </a> para más información")
         msg.show()
