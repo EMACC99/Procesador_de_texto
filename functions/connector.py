@@ -94,7 +94,7 @@ class EditorWindow(QMainWindow, text_ui):
 
     def OpenFile(self,file):
         if file is None:
-            tmpFile, ok = QFileDialog.getOpenFileName(self, "Open File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
+            tmpFile, ok = QFileDialog.getOpenFileName(self, "Open File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Chukurh (*.chk)", initialFilter="Chukurh (*.chk)")
             if not ok:
                 return
             
@@ -123,7 +123,7 @@ class EditorWindow(QMainWindow, text_ui):
         
         if self.filename is None:
             
-            tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
+            tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Chukurh (*.chk)", initialFilter="Chukurh (*.chk)")
             if not ok:
                 return
             if tmpFile is '':
@@ -160,7 +160,7 @@ class EditorWindow(QMainWindow, text_ui):
 
     def Save_as(self):
         # QFileDialog.setDefaultSuffix(QFileDialog,".chk")
-        tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
+        tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Chukurh (*.chk)", initialFilter="Chukurh (*.chk)")
 
         if not ok:
             return
