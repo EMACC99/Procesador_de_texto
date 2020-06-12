@@ -167,6 +167,7 @@ class Ui_MainWindow(object):
         self.actionPaste.setIconText(_translate("MainWindow", "Pegar"))
         self.actionPaste.setShortcut(_translate("MainWindow", "Ctrl+V"))
         self.actionCut.setText(_translate("MainWindow", "Cortar"))
+        self.actionCut.setShortcut(_translate("MainWindow", "Ctrl+X"))
         self.actionItalic.setText(_translate("MainWindow", "Italic"))
         self.actionItalic.setShortcut(_translate("MainWindow", "Ctrl+I"))
         self.actionBold.setText(_translate("MainWindow", "Bold"))

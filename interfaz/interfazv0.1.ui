@@ -199,6 +199,9 @@
    <property name="text">
     <string>Cortar</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
   </action>
   <action name="actionItalic">
    <property name="icon">
