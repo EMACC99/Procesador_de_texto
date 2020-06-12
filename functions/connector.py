@@ -98,7 +98,7 @@ class EditorWindow(QMainWindow, text_ui):
                 return
             
             if tmpFile is '':
-                QMessageBox.critical(self, 'Error', "No se pueden archivos vacios")
+                QMessageBox.critical(self, 'Error', "Operacion 'abrir archivo' cancelada por el usuario ")
                 return
             
             self.filename = tmpFile
@@ -126,7 +126,7 @@ class EditorWindow(QMainWindow, text_ui):
             if not ok:
                 return
             if tmpFile is '':
-                QMessageBox.critical(self, 'Error', "No se pueden archivos vacios")
+                QMessageBox.critical(self, 'Error', "Guardado de archivo cancelado por el usuario")
                 return
                 
             self.filename = tmpFile
@@ -165,7 +165,7 @@ class EditorWindow(QMainWindow, text_ui):
             return
 
         if tmpFile is '':
-            QMessageBox.critical(self, 'Error', "No se pueden archivos vacios")
+            QMessageBox.critical(self, 'Error', "Guardado de archivo cancelado por el usuario")
             return
 
         self.filename = tmpFile
@@ -369,4 +369,3 @@ class EditorWindow(QMainWindow, text_ui):
         "<p>Qt is The Qt Company Ltd product developed as an open source "
         "project. See <a href='http://qt.io'>here </a> for more information.</p>")
         msg.show()
-        
