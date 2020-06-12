@@ -96,8 +96,12 @@ class EditorWindow(QMainWindow, text_ui):
             tmpFile, ok = QFileDialog.getOpenFileName(self, "Open File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
             if not ok:
                 return
+            
+            if tmpFile is '':
+                QMessageBox.critical(self, 'Error', "No se pueden archivos vacios")
+                return
+            
             self.filename = tmpFile
-
         self._baseFile = os.path.basename(self.filename)
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
@@ -119,6 +123,10 @@ class EditorWindow(QMainWindow, text_ui):
             tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
             if not ok:
                 return
+            if tmpFile is '':
+                QMessageBox.critical(self, 'Error', "No se pueden archivos vacios")
+                return
+                
             self.filename = tmpFile
             self._baseFile = os.path.basename(self.filename)
         
@@ -150,6 +158,10 @@ class EditorWindow(QMainWindow, text_ui):
         tmpFile, ok = QFileDialog.getSaveFileName(self, "Save File", str(os.path.abspath(os.getcwd())), filter="All Files (*.*);;Text (*.txt);;HTML (*.html);;Churuk (*.chk)", initialFilter="Churuk (*.chk)")
 
         if not ok:
+            return
+
+        if tmpFile is '':
+            QMessageBox.critical(self, 'Error', "No se pueden archivos vacios")
             return
 
         self.filename = tmpFile
