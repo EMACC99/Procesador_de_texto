@@ -21,6 +21,20 @@ MIT License
 
 ## Introducción: 
 Repositorio creado para el proyecto final de la materia Administracion de proyectos, el cual consiste en la elaboración de un procesador de texto.
+
+## Segundo Incremento
+- About
+- Codificación de caracteres
+- Guardar como
+- Copiar, pegar, recortar
+- Control z
+- Idioma
+- Fondo
+- Iconos
+- Formato
+- Corrección de bugs menores 
+
+
 ## Información de instalación y ejecución:
  Para correrlo, se necesita la librería de PyQt5. Esta puede conseguirse haciendo
  > pip install PyQt5    
