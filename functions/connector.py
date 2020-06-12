@@ -34,6 +34,7 @@ class EditorWindow(QMainWindow, text_ui):
 
         self.actionCopy.triggered.connect(lambda: self.textEdit.copy())
         self.actionPaste.triggered.connect(lambda: self.textEdit.paste() if self.textEdit.canPaste() else None)
+        self.actionCut.triggered.connect(lambda: self.textEdit.cut())
 
         self.textEdit.setUndoRedoEnabled(True)
 
