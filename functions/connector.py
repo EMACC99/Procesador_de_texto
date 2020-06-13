@@ -131,6 +131,25 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowModified(False)
 
 
+    def wrtie_file(self, ok):
+        with io.open(self.filename, 'w', encoding='utf8') as f:
+            if ".chk" in ok or ".html" in ok:
+                color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
+                html = self.textEdit.toHtml()
+                html = html.splitlines()
+                temp  = html[3]
+                body_style = temp[:-2] + color + temp[-2:]
+                html_final = ''
+                for i in html:
+                    if i == temp:
+                        html_final += body_style + '\n'
+                    else:
+                        html_final += i + '\n'
+                f.write(html_final)
+            else:
+                f.write(self.textEdit.toPlainText())
+
+
     def Save(self):
         if not self.isWindowModified():
             return
@@ -148,22 +167,7 @@ class EditorWindow(QMainWindow, text_ui):
         
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
-        with io.open(self.filename, 'w', encoding='utf8') as f:
-            if ".chk" or ".html" in self.filename:
-                color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
-                html = self.textEdit.toHtml()
-                html = html.splitlines()
-                temp  = html[3]
-                body_style = temp[:-2] + color + temp[-2:]
-                html_final = ''
-                for i in html:
-                    if i == temp:
-                        html_final += body_style + '\n'
-                    else:
-                        html_final += i + '\n'
-                f.write(html_final)
-            else:
-                f.write(self.textEdit.toPlainText())
+        self.wrtie_file(ok)
             
         self.setWindowModified(False)
 
@@ -183,22 +187,7 @@ class EditorWindow(QMainWindow, text_ui):
         
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
-        with io.open(self.filename, 'w', encoding='utf8') as f:
-            if ".chk" or ".html" in self.filename:
-                color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
-                html = self.textEdit.toHtml()
-                html = html.splitlines()
-                temp  = html[3]
-                body_style = temp[:-2] + color + temp[-2:]
-                html_final = ''
-                for i in html:
-                    if i == temp:
-                        html_final += body_style + '\n'
-                    else:
-                        html_final += i + '\n'
-                f.write(html_final)
-            else:
-                f.write(self.textEdit.toPlainText())
+        self.wrtie_file(ok)
             
         self.setWindowModified(False)
 
