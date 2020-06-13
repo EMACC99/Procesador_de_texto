@@ -131,7 +131,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowModified(False)
 
 
-    def Save(self, check = True):
+    def Save(self):
         if not self.isWindowModified():
             return
         
@@ -149,9 +149,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
         with io.open(self.filename, 'w', encoding='utf8') as f:
-            if ".txt" in self.filename:
-                f.write(self.textEdit.toPlainText())
-            elif ".chk" or ".html" in self.filename:
+            if ".chk" or ".html" in self.filename:
                 color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
                 html = self.textEdit.toHtml()
                 html = html.splitlines()
@@ -166,7 +164,6 @@ class EditorWindow(QMainWindow, text_ui):
                 f.write(html_final)
             else:
                 f.write(self.textEdit.toPlainText())
-
             
         self.setWindowModified(False)
 
@@ -187,9 +184,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
         with io.open(self.filename, 'w', encoding='utf8') as f:
-            if ".txt" in self.filename:
-                f.write(self.textEdit.toPlainText())
-            elif ".chk" or ".html" in self.filename:
+            if ".chk" or ".html" in self.filename:
                 color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
                 html = self.textEdit.toHtml()
                 html = html.splitlines()
@@ -211,7 +206,8 @@ class EditorWindow(QMainWindow, text_ui):
 
     def closeEvent(self, a0):
         # print("Puchaste x")
-        if self.Exit() is 2 or 0:
+        check = self.Exit()
+        if check is 2 or check is 0:
             print("Adios")
             a0.accept()
         else:
@@ -221,7 +217,7 @@ class EditorWindow(QMainWindow, text_ui):
     def Exit(self):        
 
         if not self.isWindowModified():
-            return True
+            return 0
             # sys.exit()
         else:
             msg = QMessageBox()
