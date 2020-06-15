@@ -1,6 +1,24 @@
 # Readme del Proyecto
+
 ## Titulo:
 Procesador de texto 
+
+## Introducción: 
+Repositorio creado para el proyecto final de la materia Administracion de proyectos, el cual consiste en la elaboración de un procesador de texto.
+
+## Información de instalación y ejecución:
+ Para correrlo, se necesita la librería de PyQt5. Esta puede conseguirse haciendo
+ > pip install PyQt5    
+ 
+*Si se tiene Anaconda instalado no instalar PyQt5, ya que Anaconda ya lo tiene y hacerlo puede ocasionar errores en la ejecución.    
+
+Para ejecutar el programa es
+
+> python main.py
+
+o
+
+>python3 main.py
 
 ## Integrantes del equipo:
 - César Arcos González 
@@ -19,9 +37,6 @@ Procesador de texto
 ## Licencia:
 MIT License
 
-## Introducción: 
-Repositorio creado para el proyecto final de la materia Administracion de proyectos, el cual consiste en la elaboración de un procesador de texto.
-
 ## Segundo Incremento
 - About
 - Codificación de caracteres
@@ -35,16 +50,3 @@ Repositorio creado para el proyecto final de la materia Administracion de proyec
 - Corrección de bugs menores 
 
 
-## Información de instalación y ejecución:
- Para correrlo, se necesita la librería de PyQt5. Esta puede conseguirse haciendo
- > pip install PyQt5    
- 
-*Si se tiene Anaconda instalado no instalar PyQt5, ya que Anaconda ya lo tiene y hacerlo puede ocasionar errores en la ejecución.    
-
-Para ejecutar el programa es
-
-> python main.py
-
-o
-
->python3 main.py
