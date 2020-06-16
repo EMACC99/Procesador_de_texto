@@ -20,6 +20,8 @@ class Ui_MainWindow(object):
         self.fontComboBox.setObjectName("fontComboBox")
         self.verticalLayout.addWidget(self.fontComboBox)
         self.doubleSpinBox = QtWidgets.QDoubleSpinBox(self.centralwidget)
+        self.doubleSpinBox.setDecimals(0)
+        self.doubleSpinBox.setMaximum(99.0)
         self.doubleSpinBox.setObjectName("doubleSpinBox")
         self.verticalLayout.addWidget(self.doubleSpinBox)
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
@@ -27,7 +29,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.textEdit)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 797, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 797, 23))
         self.menubar.setObjectName("menubar")
         self.menufile = QtWidgets.QMenu(self.menubar)
         self.menufile.setObjectName("menufile")
@@ -178,4 +180,4 @@ class Ui_MainWindow(object):
         self.actionAbout_QT.setText(_translate("MainWindow", "Acerca de QT"))
         self.actionCambiar_Fondo.setText(_translate("MainWindow", "Cambiar Fondo"))
 
-import interfaz.iconos
+import interfaz.icons_rc
