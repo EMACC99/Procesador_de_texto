@@ -102,7 +102,13 @@ class EditorWindow(QMainWindow, text_ui):
         self._baseFile = None
         self.setWindowTitle(f"Untitled {self.titleTemplate}")
         self.textEdit.clear()
-        
+        self.doubleSpinBox.setValue(12)
+        self.textEdit.setTextColor(QColor('#000000'))
+        self.textEdit.setTextBackgroundColor(QColor(255,255,255,0))
+        c = self.textEdit.viewport().palette()
+        c.setColor(self.textEdit.viewport().backgroundRole(), QColor(255,255,255))
+        self.textEdit.viewport().setPalette(c)
+
 
     def OpenFile(self,file):
         if file is None:
@@ -131,7 +137,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.setWindowModified(False)
 
 
-    def wrtie_file(self, ok):
+    def write_file(self, ok):
         with io.open(self.filename, 'w', encoding='utf8') as f:
             if ".chk" in ok or ".html" in ok:
                 color = f'background-color:{self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name()};'
@@ -167,7 +173,7 @@ class EditorWindow(QMainWindow, text_ui):
         
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
-        self.wrtie_file(ok)
+        self.write_file(ok)
             
         self.setWindowModified(False)
 
@@ -187,7 +193,7 @@ class EditorWindow(QMainWindow, text_ui):
         
         self.setWindowTitle(self._baseFile + self.titleTemplate)
 
-        self.wrtie_file(ok)
+        self.write_file(ok)
             
         self.setWindowModified(False)
 
