@@ -2,7 +2,7 @@
 
 import json
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog, QPushButton, QAction
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QColorDialog, QPushButton, QAction, QComboBox
 from PyQt5.QtGui import QFont, QPainter, QColor, QTextCursor, QIcon, QPalette
 import sys
 import os
@@ -26,7 +26,7 @@ class EditorWindow(QMainWindow, text_ui):
         # self.actionOpen.triggered.connect(lambda: OpenFile(self, None))
         self.actionSave.triggered.connect(self.Save)
         # self.actionSave.triggered.connect(lambda: Save(self))
-        self.actionExit.triggered.connect(lambda: sys.exit() if self.Exit() is 2 or self.Exit is 0 else None)
+        self.actionExit.triggered.connect(self.Exit)
         self.actionSave_as.triggered.connect(self.Save_as)
         # self.actionSave_as.triggered.connect(lambda: Save_as(self))
         self.actionAcerca_de.triggered.connect(functions.about.about)
@@ -48,8 +48,12 @@ class EditorWindow(QMainWindow, text_ui):
 
 
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
-        self.textEdit.cursorPositionChanged.connect(self.updateFont)
-        # self.textEdit.cursorPositionChanged.connect(self.autosave)
+        #self.textEdit.cursorPositionChanged.connect(self.updateFont)
+        self.fontComboBox.currentFontChanged.connect(self.updateFont)
+        #self.textEdit.cursorPositionChanged.connect(self.textEdit.cursorPositionChanged)
+
+        #self.updateFont.connect(self.textEdit)
+        self.textEdit.cursorPositionChanged.connect(self.autosave)
 
         self.statusbar.showMessage("Ln 1, Col 1")
         self.fontComboBox.setEditable(False)
@@ -210,7 +214,6 @@ class EditorWindow(QMainWindow, text_ui):
             a0.ignore()
             
     def Exit(self):        
-
         if not self.isWindowModified():
             return 0
             # sys.exit()
@@ -239,11 +242,11 @@ class EditorWindow(QMainWindow, text_ui):
             
             if msg.exec():
                 if msg.buttonRole(msg.clickedButton())== 2:
-                    print("Discard")
+                    #print("Discard")
                     return 2
                 elif msg.buttonRole(msg.clickedButton()) == 0:
                     # i.text() == "Save    
-                    print("Save")
+                    #print("Save")
                     self.Save()
                     # sys.exit()
                     return 0
@@ -254,23 +257,20 @@ class EditorWindow(QMainWindow, text_ui):
                     return 1
 
 
-
-
-
-
     def UpdateLineCol(self):
         line = self.textEdit.textCursor().blockNumber() + 1
         col = self.textEdit.textCursor().columnNumber() + 1
         self.statusbar.showMessage(f"Ln {line}, Col {col}")
-
 
     def updateFont(self):
         Font = self.fontComboBox.currentFont()
         FontFam = Font.family()
         indexOf = self.fontComboBox.findText(FontFam)
         self.fontComboBox.setCurrentIndex(indexOf)
+        self.textEdit.setFont(Font)
         self.textEdit.setCurrentFont(Font)
         self.textEdit.setFontPointSize(self.doubleSpinBox.value())
+        
 
         
     def change_text_colour(self, value):
