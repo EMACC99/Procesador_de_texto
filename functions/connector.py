@@ -26,7 +26,7 @@ class EditorWindow(QMainWindow, text_ui):
         # self.actionOpen.triggered.connect(lambda: OpenFile(self, None))
         self.actionSave.triggered.connect(self.Save)
         # self.actionSave.triggered.connect(lambda: Save(self))
-        self.actionExit.triggered.connect(self.Exit)
+        self.actionExit.triggered.connect(lambda: sys.exit() if self.Exit() is 2 or self.Exit is 0 else None)
         self.actionSave_as.triggered.connect(self.Save_as)
         # self.actionSave_as.triggered.connect(lambda: Save_as(self))
         self.actionAcerca_de.triggered.connect(functions.about.about)
@@ -52,7 +52,7 @@ class EditorWindow(QMainWindow, text_ui):
         self.fontComboBox.currentFontChanged.connect(self.updateFont)
         self.doubleSpinBox.valueChanged.connect(self.updateFont)
 
-        self.textEdit.cursorPositionChanged.connect(self.autosave)
+        # self.textEdit.cursorPositionChanged.connect(self.autosave)
 
         self.statusbar.showMessage("Ln 1, Col 1")
         self.fontComboBox.setEditable(False)

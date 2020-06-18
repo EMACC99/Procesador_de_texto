@@ -9,7 +9,9 @@ from functions.connector import EditorWindow
 if __name__ == '__main__':
     APP = QApplication(sys.argv)
     APP.setApplicationName("Chukurh")
-
+    APP.setStyleSheet('QMainWindow{background-color: darkgray;border: 1px solid black;}')
+    APP.setStyle('Fusion')
+    
     openFile = None
 
     if len(sys.argv) > 1:
