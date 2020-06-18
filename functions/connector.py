@@ -9,7 +9,7 @@ import os
 from interfaz.interfaz import Ui_MainWindow as text_ui
 import io
 import functions.about
-
+import functions.window_color
 
 class EditorWindow(QMainWindow, text_ui):
     def __init__(self, parent = None, file = None):
@@ -41,6 +41,9 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionCopy.triggered.connect(lambda: self.textEdit.copy())
         self.actionPaste.triggered.connect(lambda: self.textEdit.paste() if self.textEdit.canPaste() else None)
         self.actionCut.triggered.connect(lambda: self.textEdit.cut())
+
+
+        self.actionNegro.triggered.connect(lambda: functions.window_color.change_window_color(self))
 
         self.textEdit.setUndoRedoEnabled(True)
 
@@ -324,5 +327,3 @@ class EditorWindow(QMainWindow, text_ui):
         self.textEdit.viewport().setPalette(c)
         print(self.textEdit.viewport().palette().color(self.textEdit.viewport().backgroundRole()).name())
         # print(c.name())
-
-
