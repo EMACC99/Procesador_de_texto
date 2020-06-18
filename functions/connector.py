@@ -50,9 +50,8 @@ class EditorWindow(QMainWindow, text_ui):
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
         #self.textEdit.cursorPositionChanged.connect(self.updateFont)
         self.fontComboBox.currentFontChanged.connect(self.updateFont)
-        #self.textEdit.cursorPositionChanged.connect(self.textEdit.cursorPositionChanged)
+        self.doubleSpinBox.valueChanged.connect(self.updateFont)
 
-        #self.updateFont.connect(self.textEdit)
         self.textEdit.cursorPositionChanged.connect(self.autosave)
 
         self.statusbar.showMessage("Ln 1, Col 1")
@@ -301,7 +300,6 @@ class EditorWindow(QMainWindow, text_ui):
     
 
     def search_and_replace(self, word, newWord = None, replace = False):
-
         self.textEdit.textCursor().beginEditBlock()
         doc = self.textEdit.document()
         cursor = QTextCursor(doc)
