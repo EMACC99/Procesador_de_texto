@@ -18,15 +18,15 @@ class Find(QtWidgets.QDialog):
     def initUI(self):
 
         # Button to search the document for something
-        findButton = QtWidgets.QPushButton("Find", self)
+        findButton = QtWidgets.QPushButton("Buscar", self)
         findButton.clicked.connect(self.find)
 
         # Button to replace the last finding
-        replaceButton = QtWidgets.QPushButton("Replace", self)
+        replaceButton = QtWidgets.QPushButton("Remplazar", self)
         replaceButton.clicked.connect(self.replace)
 
         # Button to remove all findings
-        allButton = QtWidgets.QPushButton("Replace all", self)
+        allButton = QtWidgets.QPushButton("Remplazar todos", self)
         allButton.clicked.connect(self.replaceAll)
 
         # Normal mode - radio button
@@ -34,7 +34,7 @@ class Find(QtWidgets.QDialog):
         self.normalRadio.toggled.connect(self.normalMode)
 
         # Regular Expression Mode - radio button
-        self.regexRadio = QtWidgets.QRadioButton("RegEx", self)
+        self.regexRadio = QtWidgets.QRadioButton("Expresiones Regulares", self)
         self.regexRadio.toggled.connect(self.regexMode)
 
         # The field into which to type the query
@@ -46,13 +46,13 @@ class Find(QtWidgets.QDialog):
         self.replaceField = QtWidgets.QTextEdit(self)
         self.replaceField.resize(250, 50)
 
-        optionsLabel = QtWidgets.QLabel("Options: ", self)
+        optionsLabel = QtWidgets.QLabel("Opciones: ", self)
 
         # Case Sensitivity option
-        self.caseSens = QtWidgets.QCheckBox("Case sensitive", self)
+        self.caseSens = QtWidgets.QCheckBox("Distingue Mayúsculas", self)
 
         # Whole Words option
-        self.wholeWords = QtWidgets.QCheckBox("Whole words", self)
+        self.wholeWords = QtWidgets.QCheckBox("Palabras enteras", self)
 
         # Layout the objects on the screen
         layout = QtWidgets.QGridLayout()
@@ -78,7 +78,7 @@ class Find(QtWidgets.QDialog):
         layout.addWidget(self.wholeWords, 6, 2)
 
         self.setGeometry(300, 300, 360, 250)
-        self.setWindowTitle("Find and Replace")
+        self.setWindowTitle("Buscar y Remplazar")
         self.setLayout(layout)
 
         # By default the normal mode is activated
