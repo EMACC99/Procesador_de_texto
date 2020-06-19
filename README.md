@@ -7,6 +7,8 @@ Procesador de texto (Chukurh)
 Repositorio creado para el proyecto final de la materia Administracion de Proyectos, el cual consiste en la elaboración de un procesador de texto en español.
 
 ## Información de instalación y ejecución:
+ Si quiere descargarlo y ejecutarlo mas facilmente puede descargar el ejecutable en la seccion de release, si no puede ejecutarlo de esta manera. 
+ 
  Para correrlo, se necesita tener python3 instalado.     
  También se necesita la librería de PyQt5. Esta puede conseguirse haciendo
  > pip install PyQt5    
