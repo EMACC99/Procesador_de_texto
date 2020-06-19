@@ -9,6 +9,7 @@ import os
 from interfaz.interfaz import Ui_MainWindow as text_ui
 import io
 import functions.about
+from ext import find
 
 
 class EditorWindow(QMainWindow, text_ui):
@@ -38,6 +39,11 @@ class EditorWindow(QMainWindow, text_ui):
         self.actionItalic.triggered.connect(lambda: self.text_format("Italic"))
         self.actionUnderline.triggered.connect(lambda: self.text_format("Underline"))
 
+        ###     NEW     ###
+        #self.findAction.triggered.connect(lambda: find.Find(self).show)
+        self.findAction.triggered.connect(find.Find(self).show)
+        ###             ###
+
         self.actionCopy.triggered.connect(lambda: self.textEdit.copy())
         self.actionPaste.triggered.connect(lambda: self.textEdit.paste() if self.textEdit.canPaste() else None)
         self.actionCut.triggered.connect(lambda: self.textEdit.cut())
@@ -45,7 +51,6 @@ class EditorWindow(QMainWindow, text_ui):
         self.textEdit.setUndoRedoEnabled(True)
 
         self.textEdit.textChanged.connect(lambda: self.setWindowModified(True))
-
 
         self.textEdit.cursorPositionChanged.connect(self.UpdateLineCol)
         #self.textEdit.cursorPositionChanged.connect(self.updateFont)
@@ -77,7 +82,20 @@ class EditorWindow(QMainWindow, text_ui):
             self._baseFile  = os.path.basename(self.filename)
 
         print(self.windowTitle())
+    '''
+    def ffind(self):
+        self.textEdit.textCursor().beginEditBlock()
+        doc = self.textEdit.document()
+        cursor = QTextCursor(doc)
+        while True:
+            cursor = doc.find(word, cursor)
+            if cursor.isNull():
+                break
+            if replace and newWord is not None:
+                cursor.insertText(newWord)
 
+        self.textEdit.textCursor().endEditBlock()
+    '''
 
     def autosave(self): # no sirve aun pero no rompe nada, si pueden moverle que chido
         import time

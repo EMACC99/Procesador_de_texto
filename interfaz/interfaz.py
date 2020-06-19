@@ -5,6 +5,9 @@
 # Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
+###     NEW     ###
+from ext import find
+###             ###
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -72,11 +75,15 @@ class Ui_MainWindow(object):
         self.actionSave_as.setObjectName("actionSave_as")
         self.actionAcerca_de = QtWidgets.QAction(MainWindow)
         self.actionAcerca_de.setObjectName("actionAcerca_de")
+
+
         self.actionText_Colour = QtWidgets.QAction(MainWindow)
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(":/newPrefix/iconos/font_color.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionText_Colour.setIcon(icon5)
         self.actionText_Colour.setObjectName("actionText_Colour")
+
+
         self.actionCopy = QtWidgets.QAction(MainWindow)
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(":/newPrefix/iconos/copy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -92,29 +99,56 @@ class Ui_MainWindow(object):
         icon8.addPixmap(QtGui.QPixmap(":/newPrefix/iconos/cut.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionCut.setIcon(icon8)
         self.actionCut.setObjectName("actionCut")
+
+
         self.actionItalic = QtWidgets.QAction(MainWindow)
         icon9 = QtGui.QIcon()
         icon9.addPixmap(QtGui.QPixmap(":/newPrefix/iconos/italic.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionItalic.setIcon(icon9)
         self.actionItalic.setObjectName("actionItalic")
+
         self.actionBold = QtWidgets.QAction(MainWindow)
         icon10 = QtGui.QIcon()
         icon10.addPixmap(QtGui.QPixmap(":/newPrefix/iconos/bold.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionBold.setIcon(icon10)
         self.actionBold.setObjectName("actionBold")
+
         self.actionUnderline = QtWidgets.QAction(MainWindow)
         icon11 = QtGui.QIcon()
         icon11.addPixmap(QtGui.QPixmap(":/newPrefix/iconos/underline.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionUnderline.setIcon(icon11)
         self.actionUnderline.setObjectName("actionUnderline")
+
         self.actionbackground_color = QtWidgets.QAction(MainWindow)
         icon12 = QtGui.QIcon()
         icon12.addPixmap(QtGui.QPixmap(":/newPrefix/iconos/status_bar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionbackground_color.setIcon(icon12)
         self.actionbackground_color.setObjectName("actionbackground_color")
+
+
+        ###             NEW                 ###
+        self.findAction = QtWidgets.QAction(QtGui.QIcon(":/newPrefix/iconos/find.png"), "Buscar y reemplazar", self)
+        self.findAction.setShortcut("Ctrl+F")
+        #self.findAction.triggered.connect(lambda: self.text_format("find"))
+        #self.findAction.triggered.connect(lambda: self.text_format("Underline"))
+        #self.findAction.triggered.connect(find.Find(self).show)
+        self.toolBar.addAction(self.findAction)
+        ###         NEW         ###
+
+        ###     NEW        ### !no sirve
+        #toolBar.addAction(self.findAction)
+        ###                ###
+
+        #edit.addAction(self.findAction)
+
+        #podría servir ----> ####self.toolBar.addSeparator()
+
+
         self.actionAbout_QT = QtWidgets.QAction(MainWindow)
         self.actionAbout_QT.setObjectName("actionAbout_QT")
         self.actionCambiar_Fondo = QtWidgets.QAction(MainWindow)
+
+
         icon13 = QtGui.QIcon()
         icon13.addPixmap(QtGui.QPixmap(":/newPrefix/iconos/fondo.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.actionCambiar_Fondo.setIcon(icon13)
@@ -140,6 +174,9 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionUnderline)
         self.toolBar.addAction(self.actionItalic)
         self.toolBar.addAction(self.actionCambiar_Fondo)
+
+        ### antes aquí estaba lo de find    ###
+
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -180,4 +217,4 @@ class Ui_MainWindow(object):
         self.actionAbout_QT.setText(_translate("MainWindow", "Acerca de QT"))
         self.actionCambiar_Fondo.setText(_translate("MainWindow", "Cambiar Fondo"))
 
-import interfaz.icons_rc
+import interfaz.iconos
