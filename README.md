@@ -4,7 +4,7 @@
 Procesador de texto 
 
 ## Introducción: 
-Repositorio creado para el proyecto final de la materia Administracion de proyectos, el cual consiste en la elaboración de un procesador de texto.
+Repositorio creado para el proyecto final de la materia Administracion de Proyectos, el cual consiste en la elaboración de un procesador de texto en español.
 
 ## Información de instalación y ejecución:
  Para correrlo, se necesita tener python3 instalado.     
@@ -49,5 +49,16 @@ MIT License
 - Iconos
 - Formato
 - Corrección de bugs menores 
+
+## Tercer Incremento
+-Historias de Usuario
+-Respetar formato
+-Tamaño de letra sin decimales
+-Guardar el formato cuando se tiene que hacer
+-Ejecutable
+-Actualización inmediata de texto
+-Buscar y reemplazar
+-Bugs
+
 
 
