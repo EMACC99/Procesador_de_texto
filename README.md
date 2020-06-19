@@ -51,14 +51,14 @@ MIT License
 - Corrección de bugs menores 
 
 ## Tercer Incremento
--Historias de Usuario
--Respetar formato
--Tamaño de letra sin decimales
--Guardar el formato cuando se tiene que hacer
--Ejecutable
--Actualización inmediata de texto
--Buscar y reemplazar
--Bugs
+- Historias de Usuario
+- Respetar formato
+- Tamaño de letra sin decimales
+- Guardar el formato cuando se tiene que hacer
+- Ejecutable
+- Actualización inmediata de texto
+- Buscar y reemplazar
+- Bugs
 
 
 
