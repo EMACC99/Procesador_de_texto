@@ -1,7 +1,7 @@
 # Readme del Proyecto
 
 ## Titulo:
-Procesador de texto 
+Procesador de texto (Chukurh)
 
 ## Introducción: 
 Repositorio creado para el proyecto final de la materia Administracion de Proyectos, el cual consiste en la elaboración de un procesador de texto en español.
