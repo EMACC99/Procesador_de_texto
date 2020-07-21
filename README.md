@@ -33,7 +33,7 @@ o
 * Hacer click derecho en el binario 'Chukurh' y abrir 'Properties'
 * Palomear el cuadrito que dice 'Execute' en el menú 'Permissions'
 ##### Terminal: 
-  En la terminal (`ctrl + alt + t` para ubuntu) se navega al directorio donde se descargó el programa y se pone lo siguente `chmod 777 <nombre archivo>`, igualmente se puede poner `chmod +x <nombre archivo>` para que todos lo puedan ejecutar, ó `chmod 774 <nombre archivo>` para que solo el dueño y usuario tengan permisos.
+  En la terminal (<kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>t</kbd> para ubuntu) se navega al directorio donde se descargó el programa y se pone lo siguente `chmod 777 <nombre archivo>`, igualmente se puede poner `chmod +x <nombre archivo>` para que todos lo puedan ejecutar, ó `chmod 774 <nombre archivo>` para que solo el dueño y usuario tengan permisos.
 
 ## Integrantes del equipo:
 - César Arcos González 
