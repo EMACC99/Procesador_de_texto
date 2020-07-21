@@ -31,7 +31,7 @@ o
   Hay que otrograle permisos de ejecución al programa.
   
 #### Terminal: 
-  En la terminal (`ctrl + alt + t` para ubuntu) se navega al directorio donde se descargó el programa y se pone lo siguente `chmod 777` para que todos lo puedan ejecutar, ó `chmod 774` para que solo el dueño y usuario tengan permisos.
+  En la terminal (`ctrl + alt + t` para ubuntu) se navega al directorio donde se descargó el programa y se pone lo siguente `chmod 777 <nombre archivo>` para que todos lo puedan ejecutar, ó `chmod 774 <nombre archivo>` para que solo el dueño y usuario tengan permisos.
 
 ## Integrantes del equipo:
 - César Arcos González 
