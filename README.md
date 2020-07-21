@@ -23,6 +23,16 @@ o
 
 >python3 main.py
 
+## Ejecución del binario
+### Windows:
+ Solo se ejecuta el exe
+ 
+ ### Linux:
+  Hay que otrograle permisos de ejecución al programa.
+  
+#### Terminal: 
+  En la terminal (`ctrl + alt + t` para ubuntu) se navega al directorio donde se descargó el programa y se pone lo siguente `chmod 777` para que todos lo puedan ejecutar, ó `chmod 774` para que solo sudo y usuario tengan permisos.
+
 ## Integrantes del equipo:
 - César Arcos González 
 - Eduardo Manuel Ceja Cruz 
