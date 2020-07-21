@@ -25,14 +25,14 @@ o
 
 ## Ejecución del binario
 ### Windows:
- Solo se ejecuta el exe
+* Solo se ejecuta el exe
  
- ### Linux:
-  Hay que otrograle permisos de ejecución al programa.
-#### Desde el administrador de archivos:
+### Linux:
+#### Hay que otrograle permisos de ejecución al programa antes de intentar ejecutar el archivo.
+##### Desde el administrador de archivos:
 * Hacer click derecho en el binario 'Chukurh' y abrir 'Properties'
 * Palomear el cuadrito que dice 'Execute' en el menú 'Permissions'
-#### Terminal: 
+##### Terminal: 
   En la terminal (`ctrl + alt + t` para ubuntu) se navega al directorio donde se descargó el programa y se pone lo siguente `chmod 777 <nombre archivo>`, igualmente se puede poner `chmod +x <nombre archivo>` para que todos lo puedan ejecutar, ó `chmod 774 <nombre archivo>` para que solo el dueño y usuario tengan permisos.
 
 ## Integrantes del equipo:
